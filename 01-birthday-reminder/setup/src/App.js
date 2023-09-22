@@ -1,8 +1,27 @@
-import React, { useState } from 'react';
-import data from './data';
-import List from './List';
+import React, { useState } from "react";
+import data from "./data";
+import List from "./List";
+import AddBirthday from "./Componets/addBirthday";
+
 function App() {
-  return <h2>reminder project setup</h2>;
+  const [dataYears, setDataYears] = useState(data);
+
+  const handlerClearData = () => {
+    setDataYears([]);
+  };
+
+  const handlerNewBirthDay = async (newBirthday) => {
+    const newDataBirthDays = [...dataYears, newBirthday];
+    setDataYears(newDataBirthDays);
+  };
+
+  return (
+    <>
+      <List data={dataYears} onClear={handlerClearData} />
+      <AddBirthday newBirthday={handlerNewBirthDay} />
+    </>
+  );
 }
 
 export default App;
+
