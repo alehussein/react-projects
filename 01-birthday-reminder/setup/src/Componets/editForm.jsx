@@ -55,7 +55,9 @@ const Form = (props) => {
               <button className="submit" type="submit" onClick={submitHandler}>
                 Edit
               </button>
-              <button className="close" onClick={props.onclose}>Close</button>
+              <button  type="button" className="close" onClick={props.onClose}>
+                Close
+              </button>
             </div>
           </form>
         </div>

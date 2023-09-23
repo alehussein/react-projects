@@ -7,7 +7,7 @@ import Form from "./Componets/editForm";
 function App() {
   const [dataYears, setDataYears] = useState(data);
   const [idClick, setIdClick] = useState(null);
-  const [add, setAdd] = useState(null);
+  const [add, setAdd] = useState(false);
 
   const handlerClearData = () => {
     setDataYears([]);
@@ -26,14 +26,13 @@ function App() {
   };
 
   const addHandler = () => {
-    setAdd(!add);
+    setAdd(true);
   };
 
   const handleClose = () => {
     setIdClick(null);
+    setAdd(false)
   };
-
-  console.log(idClick);
 
   return (
     <>
@@ -43,7 +42,7 @@ function App() {
         onEdit={handleEdit}
         onAdd={addHandler}
       />
-      {add !== null && (
+      {add !== false && (
         <AddBirthday newBirthday={handlerNewBirthDay} onClose={handleClose} />
       )}
 
