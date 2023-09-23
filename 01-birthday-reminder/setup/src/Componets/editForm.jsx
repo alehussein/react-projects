@@ -1,28 +1,27 @@
+import { useEffect, useState } from "react";
 import "./form.css";
-import { useState } from "react";
 
-const AddBirthday = (props) => {
-  const [newItem, setNewItem] = useState({
+const Form = (props) => {
+  const editBirthday = props.idClick;
+
+  const [edit, setEdit] = useState({
     name: "",
     image: "",
     age: "",
-    id: Date.now(),
   });
+
+  useEffect(() => {
+    setEdit(editBirthday);
+  }, [editBirthday]);
 
   const addHandler = (evt) => {
     const { name, value } = evt.target;
-    const updateItem = { ...newItem, [name]: value };
-    setNewItem(updateItem);
+    setEdit({ ...edit, [name]: value });
   };
 
   const submitHandler = (evt) => {
-    props.newBirthday(newItem);
-    setNewItem({
-      name: "",
-      image: "",
-      age: "",
-    });
     evt.preventDefault();
+    props.onClose();
   };
 
   return (
@@ -30,35 +29,33 @@ const AddBirthday = (props) => {
       <div className="form-overlay">
         <div className="form-container">
           <form className="form">
-            <h3>New Birthday</h3>
+            <h3>Edit Birthday</h3>
             <label htmlFor="name">Name</label>
             <input
               type="text"
               name="name"
-              value={newItem.name}
+              value={edit.name}
               onChange={addHandler}
             />
             <label htmlFor="image">Image</label>
             <input
               type="text"
               name="image"
-              value={newItem.image}
+              value={edit.image}
               onChange={addHandler}
             />
             <label htmlFor="years">Years</label>
             <input
               type="number"
               name="age"
-              value={newItem.age}
+              value={edit.age}
               onChange={addHandler}
             />
             <div className="buttons">
               <button className="submit" type="submit" onClick={submitHandler}>
-                Add
+                Edit
               </button>
-              <button className="close" onClick={props.onClose}>
-                Close
-              </button>
+              <button className="close" onClick={props.onclose}>Close</button>
             </div>
           </form>
         </div>
@@ -67,4 +64,4 @@ const AddBirthday = (props) => {
   );
 };
 
-export default AddBirthday;
+export default Form;

@@ -1,6 +1,9 @@
 import React from "react";
 
 const List = (props) => {
+
+  
+
   return (
     <>
       <main>
@@ -11,8 +14,8 @@ const List = (props) => {
           ) : (
             props.data.map((item) => {
               return (
-                <div key={item.name} className="person" >
-                  <img src={item.image} alt={item.name} />
+                <div key={item.name} className="person" onClick={props.onEdit}>
+                  <img src={item.image} alt={item.name} id={item.id}/>
                   <div>
                     <h4>{item.name}</h4>
                     <p>{item.age} years</p>
@@ -22,6 +25,7 @@ const List = (props) => {
             })
           )}
           <button onClick={props.onClear}>Clear All</button>
+          <button onClick={props.onAdd}>Add New Birthday</button>
         </div>
       </main>
     </>
