@@ -9,7 +9,7 @@ const List = (props) => {
     <>
       <main>
         <div className="container">
-          <h3>{data.length} - Birthdays Today</h3>
+          <h3>{props.data.length} - Birthdays Today</h3>
           {!props.data ? (
             <p style={{ textAlign: "center" }}>Empty List</p>
           ) : (
