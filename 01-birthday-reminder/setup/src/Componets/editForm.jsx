@@ -55,9 +55,10 @@ const Form = (props) => {
               <button className="submit" type="submit" onClick={submitHandler}>
                 Edit
               </button>
-              <button  type="button" className="close" onClick={props.onClose}>
+              <button type="button" className="close" onClick={props.onClose}>
                 Close
               </button>
+              <button className="delete" type="button" onClick={props.onDelete}>Delete</button>
             </div>
           </form>
         </div>

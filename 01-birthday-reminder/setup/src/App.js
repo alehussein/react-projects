@@ -34,6 +34,12 @@ function App() {
     setAdd(false)
   };
 
+  const handleDelete = () =>{
+    console.log(idClick.id)
+    const deleteItem = data.filter((item) => item.id !== idClick.id)
+    setDataYears(deleteItem)
+  }
+
   return (
     <>
       <List
@@ -46,7 +52,7 @@ function App() {
         <AddBirthday newBirthday={handlerNewBirthDay} onClose={handleClose} />
       )}
 
-      {idClick !== null && <Form idClick={idClick} onClose={handleClose} />}
+      {idClick !== null && <Form idClick={idClick} onClose={handleClose} onDelete={handleDelete}/>}
     </>
   );
 }
