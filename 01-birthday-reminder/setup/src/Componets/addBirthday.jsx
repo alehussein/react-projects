@@ -1,7 +1,6 @@
 import "./form.css";
 import { useState } from "react";
 
-
 const AddBirthday = (props) => {
   const [newItem, setNewItem] = useState({
     name: "",
@@ -25,12 +24,6 @@ const AddBirthday = (props) => {
     });
     evt.preventDefault();
   };
-
-  const handleClose = () => {
-    console.log("Close button clicked");
-    props.onClose();
-  };
-  
 
   return (
     <>
@@ -63,7 +56,7 @@ const AddBirthday = (props) => {
               <button className="submit" type="submit" onClick={submitHandler}>
                 Add
               </button>
-              <button  type="button" className="close" onClick={props.onClose}>
+              <button type="button" className="close" onClick={props.onClose}>
                 Close
               </button>
             </div>
